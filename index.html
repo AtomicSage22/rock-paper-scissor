@@ -42,16 +42,21 @@
         else if (computerSelection.toLowerCase() == "rock" && playerSelection.toLowerCase() == "scissors"){
           return "You Lose: Rock beats Scissors!";
         }
-        else if ((computerSelection.toLowerCase() == playerSelection.toLowerCase()) ){
+        else if ((computerSelection.toLowerCase() == playerSelection.toLowerCase())){
           return "Oops, it's a tie!"
+        }
+        else{
+          return "Enter proper choice";
         }
       };
       const game = () => {
         for (let i = 0; i<5; i++)
         {
-          prompt("")
+          let playerSelection = prompt("Enter your choice:");
+          console.log(playRound(playerSelection,getComputerChoice()));
         }
       }
+      game();
     </script>
   </body>
 </html>
