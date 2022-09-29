@@ -23,7 +23,7 @@
             return "scissors";
         }
       };
-      const game = (playerSelection, computerSelection) => {
+      const playRound = (playerSelection, computerSelection) => {
         if (computerSelection.toLowerCase() == "rock" && playerSelection.toLowerCase() == "paper") {
           return "You Win: Paper beats Rock!";
         }
@@ -42,19 +42,16 @@
         else if (computerSelection.toLowerCase() == "rock" && playerSelection.toLowerCase() == "scissors"){
           return "You Lose: Rock beats Scissors!";
         }
-        else if (computerSelection.toLowerCase() == "rock" && playerSelection.toLowerCase() == "rock"){
-          return "Oops, it's a tie!"
-        }
-        else if (computerSelection.toLowerCase() == "paper" && playerSelection.toLowerCase() == "paper"){
-          return "Oops, it's a tie!"
-        }
-        else if (computerSelection.toLowerCase() == "scissors" && playerSelection.toLowerCase() == "scissors"){
+        else if ((computerSelection.toLowerCase() == playerSelection.toLowerCase()) ){
           return "Oops, it's a tie!"
         }
       };
-      const playerSelection = "rock";
-      const computerSelection = getComputerChoice();
-      console.log(game(playerSelection, computerSelection));
+      const game = () => {
+        for (let i = 0; i<5; i++)
+        {
+          prompt("")
+        }
+      }
     </script>
   </body>
 </html>
