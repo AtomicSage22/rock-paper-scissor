@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-
     <header>
       <h1>ROCK-PAPER-SCISSORS</h1>
     </header>
@@ -17,13 +17,27 @@
         <button data-value="Paper">Paper</button>
         <button data-value="Scissors">Scissors</button>
       </div>
+      <div class="roundResult"></div>
+      <div>
+        <div class="playerScore"></div>
+        <div class="computerScore"></div>
+      </div>
+      <div class="result"></div>
     </main>
     <script>
-      const getComputerChoice = () => {                 //returns random choice for computer
+      let playerScore = document.querySelector("div div.playerScore");
+      playerScore.textContent = 0;
+      let computerScore = document.querySelector("div div.computerScore");
+      computerScore.textContent = 0;
+      const buttons = document.querySelectorAll("button");
+      let roundResult = document.querySelector("div.roundResult");
+      let result = document.querySelector("div.result");
+      const getComputerChoice = () => {
+        //returns random choice for computer
         let choice = Math.floor(Math.random() * 3 + 1); //randomly get number between 1 and 3
-
-        switch (choice)                                 // to randomise choice
-        {
+        switch (
+          choice // to randomise choice
+        ) {
           case 1:
             return "rock";
           case 2:
@@ -32,38 +46,70 @@
             return "scissors";
         }
       };
-      const playRound = (playerSelection, computerSelection) => {        //takes both choices and applies
-        if (computerSelection.toLowerCase() == "rock" && playerSelection.toLowerCase() == "paper") {
+      const playRound = (playerSelection, computerSelection) => {
+        //takes both choices and applies
+        if (
+          computerSelection.toLowerCase() == "rock" &&
+          playerSelection.toLowerCase() == "paper"
+        ) {
+          playerScore.textContent = Number(playerScore.textContent) + 1;
           return "You Win: Paper beats Rock!";
-        }
-        else if(computerSelection.toLowerCase() == "paper" && playerSelection.toLowerCase() == "scissors"){
+        } else if (
+          computerSelection.toLowerCase() == "paper" &&
+          playerSelection.toLowerCase() == "scissors"
+        ) {
+          playerScore.textContent = Number(playerScore.textContent) + 1;
           return "You Win: Scissor beats Paper!";
-        }
-        else if (computerSelection.toLowerCase() == "scissors" && playerSelection.toLowerCase() == "rock"){
+        } else if (
+          computerSelection.toLowerCase() == "scissors" &&
+          playerSelection.toLowerCase() == "rock"
+        ) {
+          playerScore.textContent = Number(playerScore.textContent) + 1;
           return "You Win: Rock beats Scissors!";
-        }
-        else if (computerSelection.toLowerCase() == "paper" && playerSelection.toLowerCase() == "rock"){
+        } else if (
+          computerSelection.toLowerCase() == "paper" &&
+          playerSelection.toLowerCase() == "rock"
+        ) {
+          computerScore.textContent = Number(computerScore.textContent) + 1;
           return "You Lose: Paper beats Scissors!";
-        }
-        else if (computerSelection.toLowerCase() == "scissors" && playerSelection.toLowerCase() == "paper"){
+        } else if (
+          computerSelection.toLowerCase() == "scissors" &&
+          playerSelection.toLowerCase() == "paper"
+        ) {
+          computerScore.textContent = Number(computerScore.textContent) + 1;
           return "You Lose: Scissors beats Paper!";
-        }
-        else if (computerSelection.toLowerCase() == "rock" && playerSelection.toLowerCase() == "scissors"){
+        } else if (
+          computerSelection.toLowerCase() == "rock" &&
+          playerSelection.toLowerCase() == "scissors"
+        ) {
+          computerScore.textContent = Number(computerScore.textContent) + 1;
           return "You Lose: Rock beats Scissors!";
-        }
-        else if ((computerSelection.toLowerCase() == playerSelection.toLowerCase())){
-          return "Oops, it's a tie!"
-        }
-        else{
-          return "Enter proper choice";
+        } else if (
+          computerSelection.toLowerCase() == playerSelection.toLowerCase()
+        ) {
+          return "Oops, it's a tie!";
         }
       };
-      const rockButton = document.querySelector("button.Rock");
-      rockButton.addEventListener('click',console.log("meow"));
-      // const buttons = document.querySelectorAll("button");
-      // buttons.forEach(element => {
-      //   element.addEventListener("click", console.log("I'm a fool")); //console.log(playRound(element.getAttribute("data-value"),getComputerChoice())));
-      // });
+      buttons.forEach((element) => {
+        element.addEventListener(
+          "click",
+          () =>{
+            if (+playerScore.textContent >= 5 || +computerScore.textContent >= 5){
+              return;
+            }
+            (roundResult.textContent = playRound(
+              element.getAttribute("data-value"),
+              getComputerChoice()
+            ))
+            if (+playerScore.textContent == 5) {
+            result.textContent = "You are the Winner";
+            }
+            else if (+computerScore.textContent == 5) {
+            result.textContent = "Computer is the winner";
+            }
+          }
+        );
+      });
     </script>
   </body>
 </html>
