@@ -7,14 +7,23 @@
     <title>Document</title>
   </head>
   <body>
-    <script>
-      const getComputerChoice = () => {
-        //returns random choice for computer
-        let choice = Math.floor(Math.random() * 3 + 1); //randomly get number between three
 
-        switch (
-          choice //set choice values to random numbers
-        ) {
+    <header>
+      <h1>ROCK-PAPER-SCISSORS</h1>
+    </header>
+    <main>
+      <div class="selectionButtons">
+        <button data-value="Rock" class="Rock">Rock</button>
+        <button data-value="Paper">Paper</button>
+        <button data-value="Scissors">Scissors</button>
+      </div>
+    </main>
+    <script>
+      const getComputerChoice = () => {                 //returns random choice for computer
+        let choice = Math.floor(Math.random() * 3 + 1); //randomly get number between 1 and 3
+
+        switch (choice)                                 // to randomise choice
+        {
           case 1:
             return "rock";
           case 2:
@@ -23,7 +32,7 @@
             return "scissors";
         }
       };
-      const playRound = (playerSelection, computerSelection) => {
+      const playRound = (playerSelection, computerSelection) => {        //takes both choices and applies
         if (computerSelection.toLowerCase() == "rock" && playerSelection.toLowerCase() == "paper") {
           return "You Win: Paper beats Rock!";
         }
@@ -49,14 +58,12 @@
           return "Enter proper choice";
         }
       };
-      const game = () => {
-        for (let i = 0; i<5; i++)
-        {
-          let playerSelection = prompt("Enter your choice:");
-          console.log(playRound(playerSelection,getComputerChoice()));
-        }
-      }
-      game();
+      const rockButton = document.querySelector("button.Rock");
+      rockButton.addEventListener('click',console.log("meow"));
+      // const buttons = document.querySelectorAll("button");
+      // buttons.forEach(element => {
+      //   element.addEventListener("click", console.log("I'm a fool")); //console.log(playRound(element.getAttribute("data-value"),getComputerChoice())));
+      // });
     </script>
   </body>
 </html>
