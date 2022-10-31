@@ -12,26 +12,26 @@
       <h1>ROCK-PAPER-SCISSORS</h1>
     </header>
     <main>
-      <div class="selectionButtons">
-        <button data-value="Rock" class="Rock">Rock</button>
-        <button data-value="Paper">Paper</button>
-        <button data-value="Scissors">Scissors</button>
-      </div>
-      <div class="roundResult"></div>
-      <div>
+      <div class="finalResult"></div>
+      <div class="score">
         <div class="playerScore"></div>
         <div class="computerScore"></div>
       </div>
-      <div class="result"></div>
+      <div class="roundResult"></div>
+      <div class="selectionButtons">
+        <img src="resources/Images/rock.png" data-value="Rock" alt="Rock">
+        <img src="resources/Images/paper.png" data-value="Paper" alt="Paper">
+        <img src="resources/Images/scissors.png" data-value="Scissors" alt="Scissors">
+      </div>
     </main>
     <script>
       let playerScore = document.querySelector("div div.playerScore");
       playerScore.textContent = 0;
       let computerScore = document.querySelector("div div.computerScore");
       computerScore.textContent = 0;
-      const buttons = document.querySelectorAll("button");
+      const buttons = document.querySelectorAll("img");
       let roundResult = document.querySelector("div.roundResult");
-      let result = document.querySelector("div.result");
+      let result = document.querySelector("div.finalResult");
       const getComputerChoice = () => {
         //returns random choice for computer
         let choice = Math.floor(Math.random() * 3 + 1); //randomly get number between 1 and 3

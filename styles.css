@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: white;
+}
+
+header{
+    padding-top: 1rem;
+    font-size: larger;
+    color:black;
+    text-align: center;
+}
+img{
+    width: 14rem;
+}
+.score{
+    display: flex;
+    justify-content: center;
+    gap: 10rem;
+    padding: 1%;
+}
+.roundResult{
+    text-align: center;
+    padding: 1%;
+}
+.finalResult{
+    text-align: center;
+    padding:1%;
+}
+.selectionButtons{
+    display: flex;
+    justify-content: center;
+}
